@@ -1,25 +1,23 @@
 # Python implementation of
 # Archimedes' method for
 # estimating pi
+import math
 class arch:
 	__a0 = 2*(3**0.5)
 	__b0 = 3
 	
-	def __an(self, n):
-		if (n == 0):
-			return arch.__a0
-		else:
-			return (2*self.__an(n-1)*self.__bn(n-1))/(self.__an(n-1)+self.__bn(n-1))
-	
-	def __bn(self, n):
-		if (n == 0):
-			return arch.__b0
-		else:
-			return (self.__an(n)*self.__bn(n-1))**0.5
 
 	def arch_mean_iter(self, n):
-		return self.__an(n)
+		an = arch.__a0
+		bn = arch.__b0
+
+		for i in range(n):
+			an = (2*an*bn)/(an + bn)
+			bn = (an * bn)**0.5
+			print "an = ", an, "bn = ", bn
+			print "error = ", abs(math.pi - bn)
+			
 
 a = arch()
-a.arch_mean_iter(4.0)
+a.arch_mean_iter(10)
 
