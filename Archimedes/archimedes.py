@@ -20,4 +20,4 @@ class arch:
 
 a = arch()
 a.arch_mean_iter(10)
-
+print "math.pi = ", math.pi
